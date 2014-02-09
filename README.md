@@ -19,8 +19,7 @@
 
 		$ bower install
 
-* 执行`$ grunt server`开启浏览器，启动调试（请阅读[FAQ](#如何在Chrome中调试本项目)来确保调试正常）。
-
+* 执行`$ grunt server`开启浏览器，启动调试（请阅读[FAQ](#如何在chrome中调试本项目)来确保调试正常）。
 
 ## 服务端
 
