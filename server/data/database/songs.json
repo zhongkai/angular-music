@@ -1,0 +1,88 @@
+[{
+    "id": 0,
+    "title": "答案",
+    "artist": 0,
+    "url": "data/music/答案.mp3",
+    "publish": 20140130,
+    "lyric": "data/lyric/答案.lrc",
+    "album": 0
+},{
+    "id": 1,
+    "title": "乌龟",
+    "artist": 1,
+    "url": "data/music/乌龟.mp3",
+    "publish": 20130710,
+    "lyric": "data/lyric/乌龟.lrc",
+    "album": 1
+},
+{
+    "id": 2,
+    "title": "信",
+    "artist": 1,
+    "url": "data/music/default.mp3",
+    "publish": 20131212,
+    "lyric": "data/lyric/default.lrc"
+},
+{
+    "id": 3,
+    "title": "Wonder Woman",
+    "artist": 1,
+    "url": "data/music/default.mp3",
+    "publish": 20131013,
+    "lyric": "data/lyric/default.lrc",
+    "album": 1
+},
+{
+    "id": 4,
+    "title": "不知道吗",
+    "artist": 1,
+    "url": "data/music/default.mp3",
+    "publish": 20130413,
+    "lyric": "data/lyric/default.lrc",
+    "album": 1
+},
+{
+    "id": 5,
+    "title": "My Man",
+    "artist": 1,
+    "url": "data/music/default.mp3",
+    "publish": 20130102,
+    "lyric": "data/lyric/default.lrc",
+    "album": 1
+},
+{
+    "id": 6,
+    "title": "悲伤的约定",
+    "artist": 1,
+    "url": "data/music/default.mp3",
+    "publish": 20130302,
+    "lyric": "data/lyric/default.lrc",
+    "album": 1
+},
+{
+    "id": 7,
+    "title": "因为今天格外想你",
+    "artist": 1,
+    "url": "data/music/default.mp3",
+    "publish": 20131015,
+    "lyric": "data/lyric/default.lrc",
+    "album": 1
+},
+{
+    "id": 8,
+    "title": "悲伤的情歌",
+    "artist": 1,
+    "url": "data/music/default.mp3",
+    "publish": 20130902,
+    "lyric": "data/lyric/default.lrc",
+    "album": 1
+},
+{
+    "id": 9,
+    "title": "Troublemaker",
+    "artist": 2,
+    "url": "data/music/default.mp3",
+    "publish": 20120402,
+    "lyric": "data/lyric/default.lrc",
+    "album": 2
+}]

@@ -1,0 +1,92 @@
+	<!DOCTYPE html>
+	<html ng-app='app'>
+		<head>
+			<title>ui-router多维路由实例</title>
+			<script src='bower_components/angular/angular.js'></script>
+			<script src='http://angular-ui.github.io/ui-router/release/angular-ui-router.js'></script>
+		</head>
+		<body>
+			<p> Base Navigation </p>
+			<ul>
+				<li><a ui-sref='routeA'>Show Route A</a></li>
+				<li><a ui-sref='routeB'>Show Route B</a></li>
+			</ul>
+			<div ui-view></div>
+			<script type='text/ng-template' id='routeA.html'>
+				<p> This is Route A </p>
+				<ul>
+					<li><a ui-sref='.subA'>Show Sub A</a></li>
+					<li><a ui-sref='.subB'>Show Sub B</a></li>
+				</ul>
+				<div ui-view></div>
+			</script>
+			<script type='text/ng-template' id='routeA.subA.html'>
+				<p> This is Sub A of Route A </p>
+				<p>{{content}}</p>
+			</script>
+			<script type='text/ng-template' id='routeA.subB.html'>
+				<p> This is Sub B of Route A </p>
+				<p>{{content}}</p>
+			</script>
+			<script type='text/ng-template' id='routeB.html'>
+				<p> This is Route B </p>
+				<ul>
+					<li><a ui-sref='.subA'>Show Sub A</a></li>
+					<li><a ui-sref='.subB'>Show Sub B</a></li>
+				</ul>
+				<div ui-view></div>
+			</script>
+			<script type='text/ng-template' id='routeB.subA.html'>
+				<p> This is Sub A of Route B </p>
+				<p>{{content}}</p>
+			</script>
+			<script type='text/ng-template' id='routeB.subB.html'>
+				<p> This is Sub B of Route B </p>
+				<p>{{content}}</p>
+			</script>
+			<script>
+				angular.module('app', ['ui.router'])
+				.config(function($stateProvider, $urlRouterProvider){
+
+					$urlRouterProvider.otherwise('/routeA');
+
+					$stateProvider.state('routeA', {
+						url: '/routeA',
+						templateUrl: 'routeA.html'
+					})
+					.state('routeA.subA', {
+						url: '/subA',
+						templateUrl: 'routeA.subA.html',
+						controller: function($scope){
+							$scope.content = 'routeA - subA';
+						}
+					})
+					.state('routeA.subB', {
+						url: '/subB',
+						templateUrl: 'routeA.subB.html',
+						controller: function($scope){
+							$scope.content = 'routeA - subB';
+						}
+					})
+					.state('routeB', {
+						url: '/routeB',
+						templateUrl: 'routeB.html'
+					})
+					.state('routeB.subA', {
+						url: '/subA',
+						templateUrl: 'routeB.subA.html',
+						controller: function($scope){
+							$scope.content = 'routeB - subA';
+						}
+					})
+					.state('routeB.subB', {
+						url: '/subB',
+						templateUrl: 'routeB.subB.html',
+						controller: function($scope){
+							$scope.content = 'routeB - subB';
+						}
+					});
+				});
+			</script>
+		</body>
+	</html>

@@ -1,0 +1,36 @@
+[{
+    "id": 0,
+    "name": "答案",
+    "artist": 0,
+    "image": "/data/cover/davichi合辑.jpg",
+    "desc": "杨坤/郭采洁-答案",
+    "songs": [
+        0
+    ]
+}, {
+    "id": 1,
+    "name": "Davichi经典合辑",
+    "artist": 1,
+    "image": "/data/cover/davichi合辑.jpg",
+    "desc": "一路走来的经典歌曲合辑。",
+    "songs": [
+        1, 2, 3, 4, 5, 6, 7, 8
+    ]
+
+}, {
+    "name": "夏日的回忆",
+    "artist": 1,
+    "image": "/data/cover/夏日的回忆.jpg",
+    "desc": "我抱着你的盒子，是因为今天格外想你。",
+    "songs": [
+        1, 2, 3, 4, 5, 6, 7, 8
+    ]
+}, {
+    "name": "Troublemaker",
+    "artist": 2,
+    "image": "/data/cover/troublemaker.jpg",
+    "desc": "我抱着你的盒子，是因为今天格外想你。",
+    "songs": [
+        9
+    ]
+}]

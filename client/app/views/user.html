@@ -1,0 +1,29 @@
+<div class="user container">
+	<flexbox class="info">
+		<flexitem flex="75px">
+			<img class="avatar" src="images/coder.jpg"/>
+		</flexitem>
+		<flexitem flex="1">
+			<p class="desc">
+				我是一个程序员，我要用AngularJS开发一款名叫“Angular音乐盒”的Web应用。
+			</p>
+		</flexitem>
+	</flexbox>
+	<div class="fav">
+		<div class="fav-title">我收藏的歌曲</div>
+		<ul class="favs">
+	    	<li class="item" ng-repeat="fav in favs">
+	    		<flexbox box-direction="reverse">
+	    			<flexitem flex="60px" class="listen">
+		    		</flexitem>
+		    		<flexitem flex="1">
+			    		<p class="title">{{fav.title}}</p>
+			    		<p class="artist">{{fav.artist}}</p>
+			    	</flexitem>
+			    	<flexitem flex="40px" class="add" ng-click="add(hot)">
+			    	</flexitem>
+		    	</flexbox>
+	    	</li>
+	    </ul>
+	</div>
+</div>

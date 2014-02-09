@@ -1,0 +1,18 @@
+<div class="tiny" ng-show="$parent.state != 'player'" style="display: -webkit-box; -webkit-box-orient: horizontal;" ng-controller="tinyPlayerController">
+	<flexbox>
+		<flexitem flex="60px">
+			<a ng-href="#/player">
+				<img class="cover" ng-src="{{$parent.cover || '/images/LP.png'}}"/>
+			</a>
+		</flexitem>
+		<flexitem flex="1">
+			<button class="prev" ng-class="{disable: $parent.playEmpty}" ng-click="player.previous()">上一曲</button>
+		</flexitem>
+		<flexitem flex="1">
+			<button ng-class="{pause: player.playing, play: !player.playing, disable: $parent.playEmpty}" ng-click="player.play()">播放/暂停</button>
+		</flexitem>
+		<flexitem flex="1">
+			<button ng-class="{disable: $parent.playEmpty}" class="next" ng-click="player.next()">下一曲</button>
+		</flexitem>
+	</flexbox>
+</div>

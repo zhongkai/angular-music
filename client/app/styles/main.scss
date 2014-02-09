@@ -1,0 +1,177 @@
+@import "compass/css3";
+html, body {
+	height: 100%;
+	-webkit-user-select: none;
+}
+
+body, p, div, button, header, dl, dt, dd, input, ul {
+	margin: 0;
+	padding: 0;
+	@include box-sizing(border-box);
+}
+
+button {
+	position: relative;
+	border: 0;
+	margin: 0;
+	background: transparent;
+	cursor: pointer;
+	display: block;
+	cursor: pointer;
+}
+
+//for flexbox directive
+
+.flexbox {
+	width: 100%;
+	@include display-box;
+	@include box-align(stretch);
+}
+
+.flexitem {
+	position: relative;
+	width: 0;
+}
+
+//for tab directive
+
+.tabs {
+
+	width: 100%;
+
+	ul.tabs-nav {
+
+		z-index: 1;
+		position: relative;
+
+		@include display-box;
+
+		li {
+
+			list-style: none;
+			@include box-flex(4);
+			line-height: 25px;
+			text-align: center;
+			margin: 2px 2px -1px;
+			font-size: 18px;
+
+			a {
+				display: block;
+				width: 100%;
+				text-decoration: none;
+				cursor: pointer;
+				line-height: 25px;
+				color: #000;
+			}
+
+			&.active {
+				@include border-radius(2px 2px 0 0);
+				border-width: 1px 1px 0 1px;
+				border-color: #9a9a9a;
+				border-style: solid;
+				background: #ddd;
+				line-height: 18px;
+			}
+			
+		}
+	}
+
+	.tabs-content {
+		border-top: 1px solid #9a9a9a;
+	}
+}
+
+.container {
+	padding: 42px 0 62px;
+}
+
+//for bling animation
+
+@include keyframes(bling-keyframes){
+    0%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.bling-add, .bling-remove {
+	@include transition-property(all);
+	@include transition-duration(.5s);
+	@include transition-timing-function(ease-in);
+}
+
+.bling, .bling-add.bing-add-active {
+	color: red;
+	@include animation(bling-keyframes .5s linear infinite);
+}
+
+.bling-remove.bling-remove-active {
+	color: black;
+}
+
+//for slide animation
+
+.slide-left.ng-enter,
+.slide-left.ng-leave,
+.slide-right.ng-enter,
+.slide-right.ng-leave {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    @include transition-property(all);
+	@include transition-duration(.2s);
+	@include transition-timing-function(ease-in-out);
+}
+
+
+.slide-left {
+	
+	&.ng-enter {
+	    @include translate3d(100%, 0, 0);
+
+	    &.ng-enter-active {
+	    	@include translate3d(0, 0, 0);
+	    }
+	}
+
+	&.ng-leave {
+	    @include translate3d(0, 0, 0);
+
+	    &.ng-leave-active {
+		    @include translate3d(-100%, 0, 0);
+		}
+	}
+}
+
+.slide-right {
+	
+	&.ng-enter {
+		@include translate3d(-100%, 0, 0);
+
+	    &.ng-enter-active {
+	    	@include translate3d(0, 0, 0);
+	    }
+	}
+
+	&.ng-leave {
+	    @include translate3d(0, 0, 0);
+
+	    &.ng-leave-active {
+		    @include translate3d(100%, 0, 0);
+		}
+	}
+}
+
+
+@import 'toolbar.scss';
+@import 'search.scss';
+@import 'player.scss';
+@import 'home.scss';
+@import 'user.scss';
+@import 'album.scss';
+@import 'tiny.scss';
+@import 'artist.scss';

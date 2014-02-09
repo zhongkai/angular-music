@@ -1,0 +1,260 @@
+// need compass > 0.13
+@import "compass/css3";
+
+@include keyframes(rotateFrame){
+    0%{
+        @include rotate(0deg);
+    }
+    100% {
+        @include rotate(360deg);
+    }
+}
+
+.rotate-1 {
+    @include animation(rotateFrame 5s linear infinite);
+}
+
+.rotate-2 {
+    @include animation(rotateFrame 3s linear infinite);
+}
+
+.rotate-3 {
+    @include animation(rotateFrame 1s linear infinite);
+}
+
+.player {
+
+    .empty {
+        width: 100%;
+        height: 100%;
+        font-size: 20px;
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .switcher {
+
+        height: 200px;
+        width: 100%;
+        position: relative;
+
+        margin: 10px 0;
+
+        .track {
+
+            .lp {
+                display: block; 
+                position: relative; 
+                margin: 0 auto; 
+                width: 200px; 
+                height: 200px; 
+                background: url(/images/LP.png) center center no-repeat; 
+                background-size: 100% 100%;
+
+                .cover {
+                    border-radius: 30px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    margin-left: -30px;
+                    margin-top: -30px;
+                    width: 60px;
+                    height: 60px;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    @include background-size(100% 100%);
+                }
+            }
+        }
+
+        .lyric {
+
+            height: 100%;
+
+            .lyric-list {
+
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                position: relative;
+
+                ul {
+                    width: 100%;
+                    position: absolute;
+
+                    li {
+                        width: 100%;
+                        padding: 0 20px;
+                        line-height: 16px;
+                        font-size: 10px;
+                        height: 16px;
+                        width: 100%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        text-align: center;
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    .progress {
+
+        width: 100%;
+        margin: 10px 0;
+
+        .bar {
+            width: 100%;
+            height: 4px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            /* 15px buffer */
+            padding: 0 8px 0 0;
+            background: #d9d9d9;
+            position: relative;
+
+            .pass {
+                background: #555;
+                height: 4px;
+                padding-left: 8px;
+                width: 0;
+
+                .thumb {
+                    width: 30px;
+                    height: 30px;
+                    position: absolute;
+                    top: -13px;
+                    right: -15px;
+
+                    span {
+                        display: block;
+                        width: 16px;
+                        height: 16px;
+                        color: #ddd;
+                        border: 3px solid #999;
+                        border-radius: 8px;
+                        background: #ddd;
+                        top: 50%;
+                        left: 50%;
+                        margin: -8px;
+                        position: absolute;
+                        box-sizing: border-box;
+                    }
+
+                }
+            }
+        }
+    }
+
+    .extra {
+        margin: 20px 0;
+
+        button {
+            padding: 0;
+            height: 30px;
+            border-style: solid;
+            font-weight: bold;
+            line-height: 1;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 12px;
+            background: #222;
+            background: -webkit-linear-gradient(top, #666 0%, #222 100%);
+            border-color: #000;
+            color: white;
+            -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+
+            &.singer, &.fav {
+                width: 100%;
+                border-width: 2px 1px 2px 1px;
+            }
+
+            &.switch {
+                float: right;
+                width: 50%;
+                border-radius: 4px 0 0 4px;
+                border-width: 2px 1px 2px 2px;
+            }
+
+            &.album {
+                float: left;
+                width: 50%;
+                border-radius: 0 4px 4px 0;
+                border-width: 2px 2px 2px 1px;
+            }
+
+            &:hover {
+                background: #555;
+                background: -webkit-linear-gradient(top, #999 0%, #555 100%);
+                border-color: #333;
+            }
+
+            &.disable {
+                background: #999;
+                border-color: #777;
+                cursor: default;
+            }
+
+        }
+    }
+
+    .control {
+
+        margin: 20px 0;
+
+        button {
+            text-indent: -9999px;
+            background-image: url('/images/player_buttons.png');
+            background-repeat: no-repeat;
+            /* 120*120 */
+            width: 60px;
+            height: 60px;
+            background-size: 318px 185px;
+
+            &.play {
+                margin: 0 auto;
+                background-position: -129px 0;
+
+                &:hover {
+                    background-position: -129px -62px;
+                }
+
+            }
+
+            &.pause {
+                margin: 0 auto;
+                background-position: 0 0;
+                &:hover {
+                    background-position: 0 -62px;
+                }
+            }
+
+            &.next {
+                float: left;
+                background-position: -192px 0;
+
+                &:hover {
+                    background-position: -192px -62px;
+                }
+
+            }
+
+            &.prev {
+                float: right;
+                background-position: -257px 0;
+
+                &:hover {
+                    background-position: -257px -62px;
+                }
+
+            }
+
+        }
+
+    }
+}

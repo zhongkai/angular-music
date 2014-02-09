@@ -1,0 +1,39 @@
+<div class="artist container">
+	<div class="info">
+		<img class="avatar" ng-src="{{artist.avatar}}"/>
+	</div>
+	<tabs>
+		<tab title="歌曲">
+			<ul class="musics">
+		    	<li class="item" ng-repeat="music in musics">
+		    		<flexbox box-direction="reverse">
+		    			<flexitem flex="60px" class="listen">
+			    		</flexitem>
+			    		<flexitem flex="1">
+			    			<a ng-href="#/player/{{music.id}}">
+					    		<p class="title">{{music.title}}</p>
+					    	</a>
+				    	</flexitem>
+				    	<flexitem flex="60px" class="add" ng-click="add(music)">
+			    		</flexitem>
+			    	</flexbox>
+		    	</li>
+		    </ul>
+		</tab>
+		<tab title="专辑">
+			<ul class="albums">
+		    	<li class="item" ng-repeat="album in albums">
+		    		<flexbox box-direction="reverse">
+		    			<flexitem flex="60px" class="album">
+			    		</flexitem>
+			    		<flexitem flex="1">
+			    			<a ng-href="#/album/{{album.id}}">
+					    		<p class="title">{{album.name}}</p>
+					    	</a>
+				    	</flexitem>
+			    	</flexbox>
+		    	</li>
+		    </ul>
+		</tab>
+    </tabs>
+</div>

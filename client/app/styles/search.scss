@@ -1,0 +1,121 @@
+@import "compass/css3";
+.search {
+	position: relative;
+	height: 48px;
+
+	.empty {
+        width: 100%;
+        height: 100%;
+        font-size: 20px;
+        margin-top: 50px;
+        text-align: center;
+    }
+
+	.search-box {
+		-webkit-box-shadow: 1px 1px 0 rgba(0,0,0,0.1),1px 1px 0 #fff inset;
+		margin: 5px;
+		height: 38px;
+		@include background-image(linear-gradient(#666, #222));
+		z-index: 1;
+		position: relative;
+
+		.search-btn {
+			position: relative;
+			text-indent: -9999px;
+			color: #fff;
+			font-size: 16px;
+			border-radius: 0 2px 2px 0;
+			border: 1px solid #6e6e6e;
+			height: 38px;
+			margin-left: -1px;
+			background: url('/images/search.png') center center no-repeat;
+			background-size: 60% 60%;
+		}
+
+		dl.search-type{
+			color: #fff;
+			font-size: 16px;
+			border-radius: 2px 0 0 2px;
+			border: 1px solid #6e6e6e;
+			margin-right: -1px;
+			background: -webkit-linear-gradient(top, #666 0%, #222 100%);
+
+			dt, dd {
+				height: 36px;
+				text-align: center;
+				line-height: 36px;
+				font-size: 16px;
+				@include background-image(linear-gradient(#666, #222));
+			}
+
+			dt {
+				background: url(/images/arrow_down.png) 92% center no-repeat;
+				@include background-size(8px 4px);
+			}
+		}
+
+		.search-input {
+			background: #fff;
+			height: 38px;
+			border: 1px solid #6e6e6e;
+			position: relative;
+
+			input {
+				font-size: 16px;
+				outline: none;
+				height: 21px;
+				line-height: normal;
+				position: absolute;
+				top: 8px;
+				border: none;
+				right: 40px;
+				left: 0;
+			}
+		}
+	}
+
+	ul.results {
+
+		li {
+
+			&:first-child {
+				border-top: none;
+			}
+
+			height: 40px;
+			border-top: 1px solid #fff;
+			background: #ddd;
+			border-bottom: 1px solid #9a9a9a;
+
+			.name {
+				padding-left: 20px;
+				font-size: 18px;
+				height: 40px;
+				line-height: 40px;
+				cursor: pointer;
+			}
+
+			.listen {
+				background: url(../images/listen.png) center center no-repeat;
+				@include background-size(20px 20px);
+			}
+
+			.album {
+				background: url(../images/ret_album.png) center center no-repeat;
+				@include background-size(20px 20px);
+			}
+
+			.artist {
+				background: url(../images/ret_artist.png) center center no-repeat;
+				@include background-size(26px 26px);
+			}
+
+			.add {
+				background: url(../images/add.png) center center no-repeat;
+				@include background-size(20px 20px);
+				cursor: pointer;
+			}
+		}
+
+	}
+}

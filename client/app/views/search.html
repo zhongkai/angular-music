@@ -1,0 +1,35 @@
+<div class="search container">
+    <div class="search-box" style="display: -webkit-box; -webkit-box-orient: horizontal;">
+        <dl class="search-type" style="width: 65px;">
+		    <dt ng-click="select.expand=!select.expand;">{{select.selected}}</dt>
+            <dd ng-show="select.expand && item != select.selected" ng-repeat="item in select.items" ng-click="select.expand=false;select.selected=item;">{{item}}</dd>
+		</dl>
+        <div class="search-input" style="-webkit-box-flex: 1;">
+            <input type="search" autocomplete="off" name="query" data-widget="quickdelete"
+            value="" ng-model="keyword" placeholder="关键字">
+        </div>
+        <button class="search-btn" style="width: 38px;" ng-click="query()">
+            <span>搜索</span>
+        </button>
+    </div>
+    <div class="empty" ng-show="!rets.length">
+        没有结果！我有点儿忧桑！
+    </div>
+    <ul class="results">
+        <!-- 自定义过滤器 -->
+        <!-- <li class="item" ng-repeat="ret in rets | evenMonth:'publish':2013"> -->
+        <!-- 控制器注入过滤器 -->
+        <!-- <li class="item" ng-repeat="ret in rets"> -->
+        <li class="item" ng-repeat="ret in rets | orderBy:'-publish'"> 
+            <flexbox box-direction="reverse">
+                <flexitem flex="60px" ng-class="{listen:select.selected=='歌曲',artist:select.selected=='歌手',album:select.selected=='专辑'}">
+                </flexitem>
+                <flexitem flex="1" ng-click="goResult(ret)">
+                    <p class="name">{{ret.name || ret.title}}</p>
+                </flexitem>
+                <flexitem ng-show="select.selected=='歌曲'" flex="60px" class="add" ng-click="add(ret)">
+                </flexitem>
+            </flexbox>
+        </li>
+    </ul>
+</div>

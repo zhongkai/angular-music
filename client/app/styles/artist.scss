@@ -1,0 +1,58 @@
+.artist.container {
+	
+	.info {
+
+		width: 100%;
+
+		.avatar {
+			width: 60px;
+			height: 60px;
+			margin: 5px auto;
+			display: block;
+		}
+	}
+
+	ul.musics, ul.albums {
+
+		li {
+
+			a {
+				text-decoration: none;
+				color: black;
+			}
+
+			&:first-child {
+				border-top: none;
+			}
+
+			height: 40px;
+			border-top: 1px solid #fff;
+			background: #ddd;
+			border-bottom: 1px solid #9a9a9a;
+
+			.title {
+				padding-left: 20px;
+				font-size: 18px;
+				height: 40px;
+				line-height: 40px;
+			}
+
+			.listen {
+				background: url(../images/listen.png) center center no-repeat;
+				@include background-size(20px 20px);
+			}
+
+			.album {
+				background: url(../images/ret_album.png) center center no-repeat;
+				@include background-size(20px 20px);
+			}
+
+			.add {
+				background: url(../images/add.png) center center no-repeat;
+				@include background-size(20px 20px);
+				cursor: pointer;
+			}
+		}
+
+	}
+}

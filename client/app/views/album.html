@@ -1,0 +1,21 @@
+<div class="album container">
+	<div class="album-title">
+		{{title}}
+	</div>
+	<ul class="songs">
+		<li class="item" ng-repeat="song in songs"> 
+	        <flexbox box-direction="reverse">
+	            <flexitem flex="60px" class="listen">
+	            </flexitem>
+	            <flexitem flex="1">
+	            	<a ng-href="#/player/{{song.id}}">
+	                	<p class="name">{{song.title}}</p>
+	                </a>
+	            </flexitem>
+	            <flexitem flex="40px" class="add" ng-class="song.addClass" ng-click="add(song)">
+		    		+
+	    		</flexitem>
+	        </flexbox>
+	    </li>
+	</ul>
+</div>

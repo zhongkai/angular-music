@@ -1,0 +1,63 @@
+.album.container {
+
+	.album-title {
+		background: #555;
+		color: white;
+		text-align: center;
+		font-size: 16px;
+		line-height: 25px;
+		height: 25px;
+
+		button {
+			border: 2px solid #fff;
+			border-radius: 2px;
+			height: 19px;
+			float: right;
+			margin: 3px 10px;
+			color: white;
+			padding: 0 5px;
+		}
+	}
+
+	ul.songs {
+
+		li {
+
+			a {
+				text-decoration: none;
+				color: black;
+			}
+
+			&:first-child {
+				border-top: none;
+			}
+
+			height: 40px;
+			border-top: 1px solid #fff;
+			background: #ddd;
+			border-bottom: 1px solid #9a9a9a;
+
+			.name {
+				padding-left: 20px;
+				font-size: 18px;
+				height: 40px;
+				line-height: 40px;
+			}
+
+			.listen {
+				background: url(../images/listen.png) center center no-repeat;
+				@include background-size(20px 20px);
+			}
+
+			.add {
+				text-align: center;
+				line-height: 40px;
+				font-size: 26px;
+				font-weight: 900;
+				cursor: pointer;
+			}
+		}
+
+	}
+	
+}

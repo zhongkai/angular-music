@@ -1,0 +1,76 @@
+<!-- <div ng-include="'views/toolbar.html'"></div> -->
+<div class="player container">
+	<div class="empty" ng-show="empty">
+		没有任何歌曲！我有点儿忧桑！
+	</div>
+	<div class="switcher" ng-switch on="track.sub" ng-hide="empty">
+		<div class="track slide-left" ng-switch-when="cover">
+			<rotate degrees="{{track.degrees}}" class="lp">
+				<div class="cover" style="background-image: url({{track.cover}})"></div>
+			</rotate>
+		</div>
+		<div class="lyric slide-left" ng-switch-when="lyric">
+			<lyric source="{{lyric.src}}" time="{{lyric.time}}">
+			</lyric>
+		</div>
+	</div>
+	<div class="progress" ng-hide="empty">
+		<div class="bar">
+			<div id="progress_passed" class="pass" style="position: relative; width: {{progress.musicProgress}};">
+				<div class="thumb" hm-touch="progress.touchProgress($event)" hm-drag="progress.dragProgress($event)" hm-release="progress.releaseProgress($event)">
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<flexbox class="extra" ng-hide="empty">
+		<flexitem flex="2">
+			<!-- TODO -->
+			<button class="switch" ng-click="track.sub = track.sub =='cover' ? 'lyric' : 'cover'">{{track.sub =='cover' ? '歌词' : '封面'}}</button>
+		</flexitem>
+		<flexitem flex="1">
+			<button class="fav">收藏</button>
+		</flexitem>
+		<flexitem flex="1">
+			<button class="singer">歌手</button>
+		</flexitem>
+		<flexitem flex="2">
+			<button class="album" ng-class="{disable: music.album === undefined}" ng-click="goAlbum()">专辑</button>
+		</flexitem>
+	</flexbox>
+	<flexbox class="control" ng-hide="empty">
+		<flexitem flex="2">
+			<button class="prev" ng-click="player.previous()">上一曲</button>
+		</flexitem>
+		<flexitem flex="3">
+			<button ng-class="{pause: player.playing, play: !player.playing}" ng-click="player.play()">播放/暂停</button>
+		</flexitem>
+		<flexitem flex="2">
+			<button class="next" ng-click="player.next()">下一曲</button>
+		</flexitem>
+	</flexbox>
+</div>
+<!--
+<swapper>
+	<swapItem>
+		<roller ng-rotate="{{angle}}" ng-image="{{cover}}">
+			<div style="border-radius: 160px; width: 320px; height: 320px; background: #111;">
+				<div style="background-image: url({{cover}});"></div>
+			</div>
+		</roller>
+	</swapItem>
+	<swapItem>
+	</swapItem>
+</swapper>
+<progress></progress>
+<div>
+</div>
+<div>
+	<button class="switch" ng-click="player.previous()">Lyrics</button>
+	<button class="" ng-click="player.play()" ng-hide="player.playing">Play</button>
+	<button class="next" ng-click="player.next()">Next</button>
+</div>
+<button class="prev" ng-click="player.previous()">Prev</button>
+<button class="play" ng-click="player.play()" ng-hide="player.playing">Play</button>
+<button class="next" ng-click="player.next()">Next</button>
+-->

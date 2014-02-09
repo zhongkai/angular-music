@@ -1,0 +1,82 @@
+@import "compass/css3";
+
+.tiny {
+	position: fixed;
+	z-index: 100;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	@include box-shadow(#555 0px 0px -5px 0px);
+
+	border-top: 2px solid #555;
+	background: #fff;
+
+	.cover {
+		cursor: pointer;
+		width: 50px;
+		height: 50px;
+		margin: 5px;
+	}
+
+	button {
+        text-indent: -9999px;
+        background-image: url('/images/player_buttons.png');
+        background-repeat: no-repeat;
+        /* 120*120 */
+        width: 60px;
+        height: 60px;
+        @include scale(.8);
+        background-size: 318px 185px;
+
+        &.play {
+            margin: 0 auto;
+            background-position: -129px 0;
+
+            &:hover {
+                background-position: -129px -62px;
+            }
+
+            &.disable {
+                background-position: -129px -125px;
+            }
+
+        }
+
+        &.pause {
+            margin: 0 auto;
+            background-position: 0 0;
+            &:hover {
+                background-position: 0 -62px;
+            }
+            &.disable {
+                background-position: 0 -125px;
+            }
+        }
+
+        &.next {
+            float: left;
+            background-position: -192px 0;
+
+            &:hover {
+                background-position: -192px -62px;
+            }
+
+            &.disable {
+                background-position: -192px -125px;
+            }
+        }
+
+        &.prev {
+            float: right;
+            background-position: -257px 0;
+
+            &:hover {
+                background-position: -257px -62px;
+            }
+
+            &.disable {
+                background-position: -257px -125px;
+            }
+        }
+    }
+}

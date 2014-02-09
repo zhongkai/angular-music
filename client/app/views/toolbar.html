@@ -1,0 +1,15 @@
+<div class="toolbar" style="display: -webkit-box; -webkit-box-orient: horizontal;" ng-controller="toolbarController">
+    <flexbox>
+        <flexitem flex="1">
+            <span ng-show="{{!isHome}}" class="back" ng-click="back()">返回</span>
+        </flexitem>
+        <flexitem flex="100px">
+            <div class="title-box">{{$parent.title}}</div>
+        </flexitem>
+        <flexitem flex="1">
+            <a ng-href="#/user" ng-show="$parent.state != 'user'" class="user">个人</a>
+            <a ng-href="#/search" ng-show="$parent.state != 'search'" class="search">搜索</a>
+            <a ng-href="#/home" ng-show="$parent.state != 'home'" class="home">首页</a>
+        </flexitem>
+    </flexbox>
+</div>

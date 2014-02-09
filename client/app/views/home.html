@@ -1,0 +1,52 @@
+<!-- <div ng-include="'views/toolbar.html'"></div> -->
+<div class="home container">
+	<div class="carousel">
+	    <ul style="width: {{totalSliderWidth}}px;">
+		    <li class="slider" style="width: {{sliderWidth}}px;" ng-repeat="slider in sliders">
+	    		<a ng-href="#/player/{{slider.id}}">
+	    			<img hm-touch="touchSlider($event)" hm-swipe="swipeSlider($event)" hm-drag="dragSlider($event)" hm-release="releaseSlider($event)" ng-src="{{slider.img}}" />
+	    		</a>
+	    	</li>
+	    </ul>
+	</div>
+	<tabs>
+		<tab title="热门">
+			<ul class="hots">
+		    	<li class="item" ng-repeat="hot in hots">
+		    		<flexbox box-direction="reverse">
+		    			<flexitem flex="60px" class="listen">
+			    		</flexitem>
+			    		<flexitem flex="1">
+			    			<a ng-href="#/player/{{hot.id}}">
+					    		<p class="title">{{hot.title}}</p>
+					    		<p class="artist">{{hot.artistName}}</p>
+					    	</a>
+				    	</flexitem>
+				    	<flexitem flex="40px" class="add" ng-class="hot.addClass" ng-click="add(hot)">
+				    		+
+			    		</flexitem>
+			    	</flexbox>
+		    	</li>
+		    </ul>
+		</tab>
+		<tab title="最新">
+			<ul class="news">
+		    	<li class="item" ng-repeat="newItem in news">
+		    		<flexbox box-direction="reverse">
+		    			<flexitem flex="60px" class="listen">
+			    		</flexitem>
+			    		<flexitem flex="1">
+			    			<a ng-href="#/player/{{hot.id}}">
+					    		<p class="title">{{newItem.title}}</p>
+					    		<p class="artist">{{newItem.artistName}}</p>
+					    	</a>
+				    	</flexitem>
+				    	<flexitem flex="40px" class="add" ng-class="addClass" ng-click="add(hot)">
+				    		+
+			    		</flexitem>
+			    	</flexbox>
+		    	</li>
+		    </ul>
+		</tab>
+    </tabs>
+</div>

@@ -1,0 +1,22 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Angular Music</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- build:css({.tmp,app}) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+</head>
+<body>
+	<div ng-include="'views/toolbar.html'"></div>
+	<div ng-view ng-class="slide"></div>
+	<!-- <div ng-view class="slide-left"></div> -->
+	<div ng-include="'views/tinyPlayer.html'"></div>
+	<script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script>
+</body>
+</html>

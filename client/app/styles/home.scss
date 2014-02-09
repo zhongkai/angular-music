@@ -1,0 +1,87 @@
+@import "compass/css3";
+
+.home {
+
+	.carousel {
+
+		overflow: hidden;
+
+		background: #aaa;
+
+		border-bottom: 1px solid #9a9a9a;
+
+		ul {
+			&.animate {
+				@include transition-property(all);
+				@include transition-duration(.3s);
+	  			@include transition-timing-function(ease-in);
+	  		}
+
+			li {
+
+				list-style: none;
+				display: table-cell;
+
+				img {
+					width: 275px;
+					height: 183px;
+					display: block;
+					margin: 0 auto;
+				}
+
+			}
+
+		}
+
+	}
+
+	ul.hots, ul.news {
+
+		li {
+
+			a {
+				text-decoration: none;
+				color: black;
+			}
+
+			&:first-child {
+				border-top: none;
+			}
+
+			height: 40px;
+			border-top: 1px solid #fff;
+			background: #ddd;
+			border-bottom: 1px solid #9a9a9a;
+
+			.title {
+				padding-left: 5px;
+				font-size: 18px;
+				height: 26px;
+				line-height: 26px;
+			}
+
+			.artist {
+				padding-left: 5px;
+				color: #999;
+				font-size: 8px;
+				height: 14px;
+				line-height: 14px;
+			}
+
+			.listen {
+				background: url(../images/listen.png) center center no-repeat;
+				@include background-size(20px 20px);
+			}
+
+			.add {
+				text-align: center;
+				line-height: 40px;
+				font-size: 26px;
+				font-weight: 900;
+				cursor: pointer;
+			}
+		}
+
+	}
+
+}
