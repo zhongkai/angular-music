@@ -1,5 +1,6 @@
 [{
-    "user": "stefan",
+	"id": 1,
+    "name": "stefan",
     "songs": [
         1, 7
     ]

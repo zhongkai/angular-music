@@ -1,7 +1,8 @@
 /* global define */
 define(['./module'], function (controllers) {
 	'use strict';
-	controllers.controller('homeController', function($scope, $rootScope, $window, $timeout, sliders, hots, news, playerService) {
+	controllers.controller('homeController', ['$scope', '$rootScope', '$window', '$timeout', '$location', 'sliders', 'hots', 'news', 'playerService',
+	function($scope, $rootScope, $window, $timeout, $location, sliders, hots, news, playerService) {
 
 		$rootScope.title = '首页';
 		$rootScope.state = 'home';
@@ -48,13 +49,13 @@ define(['./module'], function (controllers) {
 			$event.gesture.preventDefault();
             if(Math.abs($event.gesture.deltaX) > $window.innerWidth / 3) {
                 if($event.gesture.direction == 'left') {
-                    slideSliders(currentSlider + 1, true);
+                    slideSliders(currentSlider + 1);
                 } else {
-                    slideSliders(currentSlider - 1, true);
+                    slideSliders(currentSlider - 1);
                 }
             }
             else {
-                slideSliders(currentSlider, true);
+                slideSliders(currentSlider);
             }
 		}
 
@@ -94,5 +95,5 @@ define(['./module'], function (controllers) {
         	//可添加更多浏览器的支持
         }
 
-	});
+	}]);
 });

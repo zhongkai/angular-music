@@ -1,3 +1,7 @@
+<!--
+	本模板的用户头像和简介是写死的，实际应用中应该通过请求获得
+	我们关注的是用户收藏的歌曲，它们是通过API调用获取的
+-->
 <div class="user container">
 	<flexbox class="info">
 		<flexitem flex="75px">
@@ -18,7 +22,7 @@
 		    		</flexitem>
 		    		<flexitem flex="1">
 			    		<p class="title">{{fav.title}}</p>
-			    		<p class="artist">{{fav.artist}}</p>
+			    		<p class="artist">{{fav.artistName}}</p>
 			    	</flexitem>
 			    	<flexitem flex="40px" class="add" ng-click="add(hot)">
 			    	</flexitem>

@@ -2,111 +2,103 @@ define(['./module'], function (services) {
 	'use strict';
 
 	//Music API
-	services.factory('musicAPI', function($resource, $q, $rootScope) {
+	services.factory('musicAPI', ['$resource', '$q', '$rootScope', function($resource, $q, $rootScope) {
 
-		var resource = $resource($rootScope.apiHost + '/music/:id', {
+		var host = $rootScope.apiHost;
+
+		var resource = $resource(host + '/music/:id', {
 			id: '@id'
 		});
 
 		return {
 			fetchAll: function() {
-				var d = $q.defer();
-
-				resource.query(function(musics) {
-					d.resolve(musics);
-				}, function() {
-					d.reject('Can not get musics!');
-				});
-
-				return d.promise;
+				return resource.query();
 			},
 
 			fetchById: function(id) {
-
-				var d = $q.defer();
-
-				resource.get({id: id}, function(music) {
-					d.resolve(music);
-				}, function() {
-					d.reject('Can not get music!');
-				});
-
-				return d.promise;
+				return resource.get({id: id});
 			}
 		};
-	})
+	}])
 	//artist API
-	.factory('artistAPI', function($resource, $q, $rootScope) {
+	.factory('artistAPI', ['$resource', '$q', '$rootScope', function($resource, $q, $rootScope) {
+		var host = $rootScope.apiHost;
 
-		var resource = $resource($rootScope.apiHost + '/artist/:id', {
+		var resource = $resource(host + '/artist/:id', {
 			id: '@id'
 		});
 
 		return {
 			fetchAll: function() {
-				var d = $q.defer();
-
-				resource.query(function(artists) {
-					d.resolve(artists);
-				}, function() {
-					d.reject('Can not get artists!');
-				});
-
-				return d.promise;
+				return resource.query();
 			},
 
 			fetchById: function(id) {
-
-				var d = $q.defer();
-
-				resource.get({id: id}, function(artist) {
-					d.resolve(artist);
-				}, function() {
-					d.reject('Can not get artist!');
-				});
-
-				return d.promise;
+				return resource.get({id: id});
 			}
 		};
-	})
+	}])
+	//user API
+	.factory('userAPI', ['$resource', '$q', '$rootScope', function($resource, $q, $rootScope) {
+
+		var host = $rootScope.apiHost;
+
+		var resource = $resource(host + '/user/:userId/fav/:favId', {
+			favId: '@id'
+		});
+
+
+		return {
+			fetchAllFavs: function(userId) {
+				return resource.query({userId: userId});
+			},
+
+			saveFav: function(musicId) {
+				写死用户id
+				var FavResource = $resource(host + '/user/:userId/fav/:favId', {
+					userId: 1
+				});
+				var r = new FavResource({musicId: 1});
+				r.musicName = '泡沫';
+				r.$save();
+			},
+
+			getFav: function(musicId) {
+				var FavResource = $resource(host + '/user/:userId/fav/:favId', {
+					userId: 1,
+					favId: '@id'
+				});
+				FavResource.get({favId: musicId}, function(favMusic) {
+					expect(favMusic instanceof FavResource).toEqual(true);
+				});
+			}
+		};
+	}])
 	//album API
-	.factory('albumAPI', function($resource, $q, $rootScope) {
+	.factory('albumAPI', ['$resource', '$q', '$rootScope', function($resource, $q, $rootScope) {
 
-		var resource = $resource($rootScope.apiHost + '/album/:id', {
+		var host = $rootScope.apiHost;
+
+		var resource = $resource(host + '/album/:id', {
 			id: '@id'
 		});
 
 		return {
 			fetchAll: function() {
-				var d = $q.defer();
-
-				resource.query(function(albums) {
-					d.resolve(albums);
-				}, function() {
-					d.reject('Can not get albums!');
-				});
-
-				return d.promise;
+				return resource.query();
 			},
 
 			fetchById: function(id) {
-
-				var d = $q.defer();
-
-				resource.get({id: id}, function(album) {
-					d.resolve(album);
-				}, function() {
-					d.reject('Can not get album!');
-				});
-
-				return d.promise;
+				return resource.get({id: id});
 			}
 		};
-	})
+	}])
 	//search API
-	.factory('searchAPI', function($resource, $q, $rootScope) {
-		var host = $rootScope.apiHost + '/',
-			buildQuery = function(o) {
+	.factory('searchAPI', ['$resource', '$q', '$rootScope', function($resource, $q, $rootScope) {
+
+		var host = $rootScope.apiHost;
+
+		var buildQuery = function(o) {
 				var ret = [], i;
 				for(i in o) {
 					ret.push(i + '=' + o[i]);
@@ -119,66 +111,39 @@ define(['./module'], function (services) {
 
 		return {
 			search: function (o) {
-				var d = $q.defer();
-				if(o.type) o.type = mapType(o.type);
-
-				$resource(host + 'search' + '?' + buildQuery(o), {}).query(function(musics) {
-					d.resolve(musics);
-				}, function() {
-					d.reject('Can not search anything!');
-				});
-
-				return d.promise;
+				return $resource(host + '/search' + '?' + buildQuery(o), {}).query();
 			}
 		};
-	})
+	}])
 	//CMS API
-	.factory('cmsAPI', function($resource, $q, $rootScope) {
+	.factory('cmsAPI', ['$resource', '$q', '$rootScope', function($resource, $q, $rootScope) {
 
-		var host = $rootScope.apiHost + '/';
+		var host = $rootScope.apiHost;
 
 		return {
 
 			fetchSliders: function() {
-				var d = $q.defer();
-
-				$resource(host + 'cms/slider', {}).query(function(sliders) {
-					angular.forEach(sliders, function(item) {
-						item.img = host + item.img;
-					});
-					d.resolve(sliders);
-				}, function() {
-					d.reject('Can not get sliders!');
-				});
-
-				return d.promise;
+				return $resource(host + '/cms/slider').query();
 			},
 
 			fetchHots: function(id) {
-
-				var d = $q.defer();
-
-				$resource(host + 'cms/hot', {}).query(function(music) {
-					d.resolve(music);
-				}, function() {
-					d.reject('Can not get hosts!');
-				});
-
-				return d.promise;
+				return $resource(host + '/cms/hot', {}).query();
 			},
 
 			fetchNews: function(id) {
-
-				var d = $q.defer();
-
-				$resource(host + 'cms/new', {}).query(function(music) {
-					d.resolve(music);
-				}, function() {
-					d.reject('Can not get news!');
-				});
-
-				return d.promise;
+				//如下是自定义方法的例子
+				// var Res = $resource('/resource/:id', null,
+				// {
+				// 	'update': {
+				// 		method:'PUT',		
+				// 		params: {
+				// 			tag: 2
+				// 		}
+				// 	}
+				// });
+				// var res = Res.update({id: 1}, {key1: 1, key2: 2});
+				return $resource(host + '/cms/new', {}).query();
 			}
 		};
-	});
+	}]);
 });

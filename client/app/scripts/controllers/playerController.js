@@ -1,7 +1,8 @@
 /* global define */
 define(['./module'], function (controllers) {
 	'use strict';
-	controllers.controller('playerController', function ($scope, $rootScope, $window, $interval, $http, $location, $routeParams, playerService, music) {
+	controllers.controller('playerController', ['$scope', '$rootScope', '$window', '$interval', '$http', '$location', '$routeParams', 'playerService', 'userAPI', 'music',
+	function ($scope, $rootScope, $window, $interval, $http, $location, $routeParams, playerService, userAPI, music) {
 
 		var progressPassedEl,
 			progressWidth = 0,
@@ -82,6 +83,11 @@ define(['./module'], function (controllers) {
 				$location.path('/album/' + $scope.music.album);
 		};
 
+		$scope.addFav = function() {
+			//TODO
+			userAPI.saveFav(1);
+		};
+
 		playerService.onUpdate(function(progress, time) {
 			$scope.$apply(function() {
 				$scope.progress.musicProgress = progress + '%';
@@ -98,6 +104,7 @@ define(['./module'], function (controllers) {
 			playerService.play(music);
 
 			$http.get($rootScope.apiHost + '/' + music.lyric).success(function(data) {
+				console.info(arguments);
 				$scope.lyric.src = data;
 			});
 		}
@@ -135,5 +142,5 @@ define(['./module'], function (controllers) {
 	    	$interval.cancel(intervalId);
 		});
 
-	});
+	}]);
 });

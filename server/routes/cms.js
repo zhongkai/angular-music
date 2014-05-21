@@ -6,15 +6,15 @@ exports.findSliders = function(req, res) {
 	res.json([
 		{
 			img: 'data/slider/slider1.jpg',
-			id: ''
+			id: 1
 		},
 		{
 			img: 'data/slider/slider2.jpg',
-			id: '#'
+			id: 2
 		},
 		{
 			img: 'data/slider/slider3.jpg',
-			id: '#'
+			id: 3
 		}
 	]);
 };

@@ -39,7 +39,7 @@ define(['./module'], function (directives) {
 				element.css(style);
 			}
 		};
-	}).directive('flexitem', function ($interpolate) {
+	}).directive('flexitem', ['$interpolate', function ($interpolate) {
 		return {
 			template: '<div class="flexitem" ng-transclude></div>',
 			restrict: 'EA',
@@ -75,5 +75,5 @@ define(['./module'], function (directives) {
 				}
 			}
 		};
-	});
+	}]);
 });

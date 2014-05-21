@@ -1,7 +1,7 @@
 /* global define */
 define(['./module'], function (controllers) {
 	'use strict';
-	controllers.controller('albumController', function($scope, $rootScope, $routeParams, $timeout, playerService, albumAPI) {
+	controllers.controller('albumController', ['$scope', '$rootScope', '$routeParams', '$timeout', 'playerService', 'albumAPI', function($scope, $rootScope, $routeParams, $timeout, playerService, albumAPI) {
 		$rootScope.title = "专辑";
 		$rootScope.state = "album";
 
@@ -21,5 +21,5 @@ define(['./module'], function (controllers) {
 				music.addClass = '';
 			}, 1000);
 		};
-	});
+	}]);
 });

@@ -1,7 +1,8 @@
 /* global define */
 define(['./module'], function (controllers) {
 	'use strict';
-	controllers.controller('tinyPlayerController', function ($scope, $rootScope, $window, $interval, $http, playerService) {
+	controllers.controller('tinyPlayerController', ['$scope', '$rootScope', '$window', '$interval', '$http', 'playerService',
+	function ($scope, $rootScope, $window, $interval, $http, playerService) {
 
 		$scope.player = {
 
@@ -30,5 +31,5 @@ define(['./module'], function (controllers) {
 			}
 		};
 
-	});
+	}]);
 });

@@ -8,7 +8,7 @@
 				templateUrl: '../../views/tabs.html',
 				replace: true,
 				scope: {},
-				controller: function($scope) {
+				controller: ['$scope', function($scope) {
 					$scope.tabs = [];
 
 					$scope.select = function(tab) {
@@ -24,7 +24,7 @@
 						}
 						$scope.tabs.push(tab);
 					};
-				}
+				}]
 			};
 		}).directive('tab', function() {
 			return {

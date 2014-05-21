@@ -1,7 +1,8 @@
 /* global define */
 define(['./module'], function (controllers) {
 	'use strict';
-	controllers.controller('searchController', function($scope, $rootScope, $http, $location, playerService, orderByFilter) {
+	controllers.controller('searchController', ['$scope', '$rootScope', '$http', '$location', 'playerService', 'orderByFilter',
+	function($scope, $rootScope, $http, $location, playerService, orderByFilter) {
 
 		$rootScope.title = '搜索';
 		$rootScope.state = 'search';
@@ -48,5 +49,5 @@ define(['./module'], function (controllers) {
 		// 	}
 		// });
 
-	});
+	}]);
 });

@@ -29,7 +29,7 @@
 			<button class="switch" ng-click="track.sub = track.sub =='cover' ? 'lyric' : 'cover'">{{track.sub =='cover' ? '歌词' : '封面'}}</button>
 		</flexitem>
 		<flexitem flex="1">
-			<button class="fav">收藏</button>
+			<button class="fav" ng-click="addFav(music.id)">收藏</button>
 		</flexitem>
 		<flexitem flex="1">
 			<button class="singer">歌手</button>

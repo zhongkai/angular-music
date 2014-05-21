@@ -12,7 +12,13 @@ var express = require('express'),
 
 var app = express();
 app.use(express.bodyParser());
-app.use(express.static(path.join(__dirname, '../client/app')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.all('*', function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "accept, authentication, origin");
+	next();
+});
 
 app.get('/data/lyric/:file', lyric.getLyric);
 
@@ -30,8 +36,8 @@ app.get('/artist', artist.findAll);
 app.get('/search', search.search);
 
 // app.get('/user/:id', user.findById);
-// app.get('/user/:id/fav', user.findAllFav);
-// app.get('/user/:id/fav/:fid', user.findFavById);
+app.get('/user/:id/fav', user.findFavs);
+app.get('/user/:id/fav/:favId', user.findFavById);
 // app.post('/user/:id/fav', user.addFav);
 // app.put('/user/:id/fav/:fid', user.updateFavById);
 

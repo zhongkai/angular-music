@@ -64,7 +64,7 @@ var createDB = function(callback) {
 		},
 		//初始化收藏
 		function(cb) {
-			createTableFromFile('favorites', dataPath + '/favorites.json', cb);
+			createTableFromFile('users', dataPath + '/users.json', cb);
 		}
 	], function(err, results) {
 		if(err) throw err;

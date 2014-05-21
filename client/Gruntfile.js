@@ -257,9 +257,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/concat/scripts',
-          src: '*.js',
-          dest: '.tmp/concat/scripts'
+          cwd: '<%= yeoman.app %>/scripts',
+          src: '**/*.js',
+          dest: '<%= yeoman.dist %>/scripts'
         }]
       }
     },
@@ -285,7 +285,8 @@ module.exports = function (grunt) {
             '*.html',
             'views/{,*/}*.html',
             'bower_components/**/*',
-            'images/{,*/}*.{webp}',
+            // 'images/{,*/}*.{webp}',
+            'images/**/*',
             'fonts/*'
           ]
         }, {
@@ -313,24 +314,24 @@ module.exports = function (grunt) {
       ],
       dist: [
         'compass:dist',
-        'imagemin',
-        'svgmin'
+        // 'imagemin',
+        // 'svgmin'
       ]
     },
 
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css',
-    //         '<%= yeoman.app %>/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
+    cssmin: {
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/styles/main.css': [
+            '.tmp/styles/{,*/}*.css',
+            '<%= yeoman.app %>/styles/{,*/}*.css'
+          ]
+        }
+      }
+    },
     // uglify: {
     //   dist: {
     //     files: {
@@ -354,13 +355,14 @@ module.exports = function (grunt) {
 
     requirejs: {
       options: {
-          baseUrl: '<%= yeoman.app %>',
+          baseUrl: '<%= yeoman.app %>/scripts',
           webroot: 'scripts',
           paths: {
-              requireLib: 'bower_components/requirejs/require'
+              requireLib: '../bower_components/requirejs/require'
           },
           out: '<%= yeoman.dist %>/scripts/app.js',
-          main: 'scripts/main'
+          name: 'main',
+          mainConfigFile: '<%= yeoman.app %>/scripts/main.js'
       },
       server: {
           options: {
@@ -369,20 +371,32 @@ module.exports = function (grunt) {
       },
       dist: {
           options: {
-              build: true
+              // normalizeDirDefines: 'all',
+              // onBuildRead: function (moduleName, path, contents) {
+              //     if(path == '/Users/mac/Projects/angular-music/client/dist/scripts/controllers/playerController.js')
+              //       console.info(require('ngmin').annotate(contents));
+              //     return require('ngmin').annotate(contents);
+              // }
           }
       }
     },
 
     'regex-replace': {
-      dist: {
+      css: {
+          src: ['<%= yeoman.dist %>/styles/main.css'],
+          actions: [
+            {
+            }
+          ]
+      },
+      html: {
         src: ['<%= yeoman.dist %>/index.html'],
         actions: [
           {
             name: 'requirejs-merge',
             search: '<script src="bower_components/requirejs/require.js" data-main=".*"></script>',
             replace: function(match){
-              return '<script src="main.js"></script>';
+              return '<script src="scripts/app.js"></script>';
             },
             flags: 'g'
           }
@@ -426,16 +440,20 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
-    // 'concat',
-    'ngmin',
+
+    'concat',
+
     'copy:dist',
-    // 'cdnify',
-    // 'cssmin',
+    'ngmin',
+
+    'cdnify',
+    'cssmin',
     // 'uglify',
     // 'rev',
+
     'usemin',
     'requirejs:dist',
-    'regex-replace:dist',
+    'regex-replace:html',
     'htmlmin'
   ]);
 

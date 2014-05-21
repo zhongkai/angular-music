@@ -1,6 +1,7 @@
 define(['./module'], function (services) {
 	'use strict';
-	services.factory('playerService', function($rootScope) {
+	services.factory('playerService', ['$rootScope', function($rootScope) {
+
 		var audio = new Audio,
 			player,
 			playList = [],
@@ -23,7 +24,6 @@ define(['./module'], function (services) {
 				}
 
 				if(song) {
-					console.info(song);
 					angular.forEach(playCBArray, function(cb) {
 						cb.call(player, song, 0);
 					});
@@ -101,5 +101,5 @@ define(['./module'], function (services) {
 		});
 
 		return player;
-	});
+	}]);
 });
